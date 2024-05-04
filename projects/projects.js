@@ -22,7 +22,7 @@ var project_list = {
             "name": "graph-program",
             "version": "1.0",
             "programming_languages": [
-                "Python"
+                "C"
             ],
             "description": "A graph program that can show different graphs in your terminal"
         }
