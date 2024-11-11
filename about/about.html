@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Voids Website</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+
+    <link rel="stylesheet" href="../css/pico.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <!-- <link rel="manifest" href="manifest.json"> -->
+</head>
+<body style="overflow: hidden;">
+    <header>
+        <div class="header-container">
+            <h1>Void's Website</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="../news/news.html">News</a></li>
+                    <li><a href="../projects/projects.html">Projects</a></li>
+                    <li><button id="loginButton">Sign in</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="loginPopup" class="popup">
+        <div class="popup-content">
+            <span id="closePopup" class="close">&times;</span>
+            <h1>Login</h1>
+            <input type="text" placeholder="Username" id="username">
+            <input type="password" placeholder="Password" id="password">
+            <button id="loginSubmitButton" style="margin-top: 30px;">Login</button>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

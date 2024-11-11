@@ -1,2 +1,5 @@
+
+# Ignore everything in the root except the "data" directory
 data/news/news.json
 data/projects/projects.json
+data/settings.json

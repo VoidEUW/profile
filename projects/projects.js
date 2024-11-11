@@ -1,75 +1,65 @@
-document.addEventListener("DOMContentLoaded", function() {
-    let projects_list = loadProjects();
-    //displayProjects(projects_list);
-});
-
-function loadProjects() {
-    fetch('projects.json') // Passe den Pfad entsprechend an
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Fehler beim Laden der Datei.');
-            }
-            return response.json();
-        })
+/**
+    @Author: Void (c) 2024
+    @Title: Projects-Script
+    @Description: This script is used to display the projects on the website.
+    @Since: 1.0.0
+*/
+document.addEventListener('DOMContentLoaded', () => {
+    
+    loadProjects()
         .then(projects => {
-            const json = JSON.stringify(projects);
-            console.log(json);
-            // Hier kannst du weitere Logik ausführen oder die JSON-Daten anderweitig verwenden
-            return json;
+            // console.log(projects.projects);
+            displayProjects(projects.projects);
         })
         .catch(error => {
-            console.error('Fehler:', error);
+            console.error('Error:', error);
         });
-}
 
-function displayProjects(name, programming_languages, description) {
-
-}
-
-function getSearchResults(content) {
-    let results = [];
-    search_list.players.forEach(player => {
-        if (player.name.toLowerCase().includes(content.toLowerCase()))
-            results.push(player);
-    });
-    return results;
-}
-
-function displaySearchResults(results) {
-    output = "";
-    results.forEach(result => {
-        let name = result.name;
-        let profile_picture = result.profile_picture;
-        if(profile_picture.length < 1) {
-            profile_picture = "not_found.png"
+    async function loadProjects() {
+        try {
+            const response = await fetch('../data/projects/projects.json');
+            if (!response.ok) {
+                throw new Error('Error while loading the JSON file.');
+            }
+            const projects = await response.json();
+            return projects;
+        } catch (error) {
+            console.error('Error:', error);
         }
-        let games_list = result.games, games_html = "";
-        let tags_list = result.tags, tags_html = `<p style="font-size: large; color: blueviolet">`;
-        let description = result.description;
+    }
 
-        games_list.forEach(game => {
-            games_html += `<img src="./assets/games/${game}.png" alt="${game}" style="width: 50px"></img>`;
+    function displayProjects(projectList) {
+        let projectsList = document.getElementById('project-list');
+        projectList.forEach(project => {
+            let projectTitle = project.meta.name;
+            let projectDescription = project.meta.description;
+            let projectImage = project.meta.image;
+            let projectLink = project.meta.project_url;
+            let projectLanguages = getProgrammingLanguageList(project.meta.programming_languages);
+            let htmlTemplate = `
+                <div class="project-entry">
+                    <article class="grid" style="height: 350px;">
+                        <a href="./${projectLink}.html" class="cover-image" style="background: url(../assets/projects/${projectImage}); background-size: cover; background-position: center center;"></a>
+                        <div style="padding: 15px;">
+                            <a href="./${projectLink}.html" style="text-decoration: none;"><h3>${projectTitle}</h3></a>
+                            <p>${projectDescription}</p>
+                            <div>
+                                <p style="margin-bottom: 10px;"><strong>Languages:</strong></p>
+                                ${projectLanguages}
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            `;
+            projectsList.innerHTML += htmlTemplate;
         });
-        tags_list.forEach(tag => {
-            tags_html += `${tag} `;
-        });
-        tags_html += "</p>";
+    }
 
-        output += `
-        <div class="grid" style="grid-template-columns: 30% 68.3%;">
-            <article style="background: url(./assets/users/${profile_picture}); background-size: cover; background-position: center center"></article>
-            <article>
-                <h3 style="margin-bottom: 5px">${name}<h3>
-                <div style="margin-bottom: 5px">
-                    ${games_html}
-                </div>
-                <div>
-                    ${tags_html}
-                </div>
-                <p style="font-size: large;">${description}</p>
-            </article>
-        </div>
-        `;
-    });
-    searchResults.innerHTML = output;
-}
+    function getProgrammingLanguageList(languages) {
+        let languageList = '';
+        languages.forEach(language => {
+            languageList += `<img src="../assets/icons/${language}.png" class="programming-icon">`;
+        });
+        return languageList;
+    }
+});

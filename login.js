@@ -1,40 +1,43 @@
-/*
-    @Author: voideuw
+/**
+    @Author: Void (c) 2024
     @Title: Login-Script
     @Description: This script is used to handle the login functionality of the website.
+    @Since: 1.0.0
 */
 document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.getElementById('loginButton');
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
     const loginSubmitButton = document.getElementById('loginSubmitButton');
     const closePopup = document.getElementById("closePopup");
     // const logoutButton = document.getElementById('logoutButton');
 
-    // Popup anzeigen, wenn "Sign in" geklickt wird
+    function toggleLoginState(isLoggedIn) {
+        loginButton.style.display = isLoggedIn ? 'none' : 'inline';
+        // logoutButton.style.display = isLoggedIn ? 'inline' : 'none';
+    }
+
     loginButton.addEventListener("click", () => {
         loginPopup.style.display = "flex";
     });
 
-    /*
-    logoutButton.addEventListener("click", () => {
-        alert("Erfolgreich ausgeloggt!");
-    });
-    */
-
-    // Popup schließen, wenn das X geklickt wird
     closePopup.addEventListener("click", () => {
         loginPopup.style.display = "none";
     });
 
-    // Popup schließen, wenn außerhalb des Popups geklickt wird
     window.addEventListener("click", (event) => {
         if (event.target === loginPopup) {
             loginPopup.style.display = "none";
+            usernameInput.value = "";
+            passwordInput.value = "";
         }
     });
 
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
             loginPopup.style.display = "none";
+            usernameInput.value = "";
+            passwordInput.value = "";
         }
     });
 
@@ -44,13 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Login-Button Klick-Event (kann später angepasst werden)
     loginSubmitButton.addEventListener("click", () => {
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-        
-        if (username && password) {
-            if (username !== "" || password !== "") {
+        if (usernameInput.value && passwordInput.value) {
+            if (usernameInput.value !== "" || passwordInput.value !== "") {
                 alert("Falscher Benutzername oder Passwort!");
                 return;
             }
@@ -60,4 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Bitte füllen Sie beide Felder aus.");
         }
     });
+
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    // console.log(isLoggedIn);
+    toggleLoginState(isLoggedIn);
 });

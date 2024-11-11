@@ -1,81 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <!-- META DATA -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Voids Profile</title>
-    <link rel="icon" type="image/x-icon" href="../assets/icon.jpg">
+    <title>Reisetagebuch</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
 
-    <!-- IMPORTED CSS FILES / IMPORTED GOOGLE FONTS-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
-
-    <!-- CSS FILES -->
-    <style>
-        a {text-decoration: none;}
-    </style>
-
-    <script type="text/javascript" src="projects.json"></script>
-    <script src="projects.js"></script>
-  </head>
-
-  <body>
-
+    <link rel="stylesheet" href="../css/pico.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="../css/projects.css"/>
+    <!-- <link rel="manifest" href="manifest.json"> -->
+     
+    <script src="../login.js"></script>
+    <script src="../projects/projects.js"></script>
+</head>
+<body>
     <header>
-        <div class="container">
+        <div class="header-container">
+            <h1>Void's Website</h1>
             <nav>
                 <ul>
-                    <li><strong>Voids Profile</strong></li>
-                </ul>
-                <ul>
-                    <li><a href="../index.html">Overview</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/about.html">About</a></li>
+                    <li><a href="../news/news.html">News</a></li>
                     <li><a href="projects.html">Projects</a></li>
+
+                    <li><button id="loginButton">Sign in</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container">
+    <div id="loginPopup" class="popup">
+        <div class="popup-content">
+            <span id="closePopup" class="close">&times;</span>
+            <h1>Login</h1>
+            <input type="text" placeholder="Username" id="username">
+            <input type="password" placeholder="Password" id="password">
+            <button id="loginSubmitButton" style="margin-top: 30px;">Login</button>
+        </div>
+    </div>
 
-        <section>
-            <article>
-                <h1>Projects</h1>
-                <p>Here you can a few of my projects, I made in spare time! I hope you enjoy looking at them! I will add more to the List in the future</p>
-            </article>
-            <div id="projectsList">
+    <div id="background" style="width: 100%; padding: 0; margin: 0;">
+        <img src="../assets/background.jpg" alt="background" style="height: 20vh; width: 100%; object-fit: cover;">
+    </div>
 
-            </div>
-            <div class="grid" style="grid-template-columns: 30% 68.64%;">
-                <article style="background: url('../assets/projects/project-miko.png'); background-size: cover; background-position: center center;"></article>
-                <article>
-                    <h2><a href="">project-miko</a></h2>
-                    <p>Project Miko is a discord bot thats moderating on servers, logging and so on (work in progress)</p>
-                    <p>Language: <strong>Python</strong></p>
-                </article>
-            </div>
-            <div class="grid" style="grid-template-columns: 30% 68.64%;">
-                <article style="background: url('../assets/projects/graph-program.png'); background-size: cover; background-position: center center;"></article>
-                <article>
-                    <h2><a href="">graph-program</a></h2>
-                    <p>A program that displays graphs. No libraries used, just plain C with std.io and std.lib</p>
-                    <p>Language: <strong>C</strong></p>
-                </article>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="grid">
-                <div></div>
-                <div style="text-align: center"><strong>Made by Void</strong></div>
-                <div></div>
+    <main class="container" style="width: 60vw; padding-top: 5vh;">
+        <div style="padding-bottom: 2vh;">
+            <h1 style="text-align: center;">Projects</h1>
+        </div>
+        <div id="project-list">
+            <div class="project-entry">
+                <!-- PROJECTS WILL BE FILLED VIA JAVASCRIPT -->
             </div>
         </div>
-    </footer>
-
-  </body>
+    </main>
+</body>
 </html>
