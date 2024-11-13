@@ -1,14 +1,13 @@
 /**
-    @Author: Void (c) 2024
-    @Title: Projects-Script
-    @Description: This script is used to display the projects on the website.
-    @Since: 1.0.0
-*/
+ * @author: Void (c) 2024
+ * @name: Projects-Script
+ * @description: This script is used to display the projects on the website.
+ * @since: 1.0.0
+ */
 document.addEventListener('DOMContentLoaded', () => {
     
     loadProjects()
         .then(projects => {
-            // console.log(projects.projects);
             displayProjects(projects.projects);
         })
         .catch(error => {
@@ -31,21 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayProjects(projectList) {
         let projectsList = document.getElementById('project-list');
         projectList.forEach(project => {
-            let projectTitle = project.meta.name;
-            let projectDescription = project.meta.description;
-            let projectImage = project.meta.image;
-            let projectLink = project.meta.project_url;
-            let projectLanguages = getProgrammingLanguageList(project.meta.programming_languages);
             let htmlTemplate = `
                 <div class="project-entry">
                     <article class="grid" style="height: 350px;">
-                        <a href="./${projectLink}.html" class="cover-image" style="background: url(../assets/projects/${projectImage}); background-size: cover; background-position: center center;"></a>
+                        <a href="./project-list/${project.meta.project_url}.html" class="cover-image" style="background: url(../assets/projects/${project.meta.image}); background-size: cover; background-position: center center;"></a>
                         <div style="padding: 15px;">
-                            <a href="./${projectLink}.html" style="text-decoration: none;"><h3>${projectTitle}</h3></a>
-                            <p>${projectDescription}</p>
+                            <a href="./project-list/${project.meta.project_url}.html" style="text-decoration: none;"><h3>${project.meta.name}</h3></a>
+                            <p>${project.meta.description}</p>
                             <div>
                                 <p style="margin-bottom: 10px;"><strong>Languages:</strong></p>
-                                ${projectLanguages}
+                                ${getProgrammingLanguageList(project.meta.programming_languages)}
                             </div>
                         </div>
                     </article>

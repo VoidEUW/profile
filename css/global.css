@@ -1,3 +1,68 @@
 /*
     Global CSS styles for the entire application
 */
+
+.scrollbar::-webkit-scrollbar {display: none;}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    padding: 0 3vw;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Popup Style */
+.popup {
+    display: none;  /* Popup ist zunächst unsichtbar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* halbtransparenter Hintergrund */
+    z-index: 1;  /* Popup über anderen Inhalten */
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #181c25;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+}
+
+.popup-content input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.close {
+    position: relative;
+    top: -40px;
+    right: -180px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

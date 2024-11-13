@@ -1,0 +1,16 @@
+{
+    "projects": [
+        {
+            "meta": {
+                "name": "Sample Project",
+                "description": "This is a sample project",
+                "project_url": "sample-project",
+                "image": "sample.png",
+                "programming_languages": ["python"]
+            },
+            "content": {
+
+            }
+        }
+    ]      
+}
