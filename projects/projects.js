@@ -1,68 +1,59 @@
-var project_list = {
-    "projects": [
-        {
-            "name": "project-odyssee",
-            "version": "(work in progess)",
-            "programming_languages": [
-                "HTML",
-                "CSS",
-                "Javascript"
-            ],
-            "description": "this project is secret..." 
-        },
-        {
-            "name": "project-miko",
-            "version": "(work in progress)",
-            "programming_languages": [
-                "Python"
-            ],
-            "description": "Project Miko is a discord bot thats moderating on servers, logging and so on (work in progress)"
-        },
-        {
-            "name": "graph-program",
-            "version": "1.0",
-            "programming_languages": [
-                "C"
-            ],
-            "description": "A graph program that can show different graphs in your terminal"
+/**
+ * @author: Void (c) 2024
+ * @name: Projects-Script
+ * @description: This script is used to display the projects on the website.
+ * @since: 1.0.0
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    
+    loadProjects()
+        .then(projects => {
+            displayProjects(projects.projects);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+    async function loadProjects() {
+        try {
+            const response = await fetch('../data/projects/projects.json');
+            if (!response.ok) {
+                throw new Error('Error while loading the JSON file.');
+            }
+            const projects = await response.json();
+            return projects;
+        } catch (error) {
+            console.error('Error:', error);
         }
-    ]
-};
+    }
 
-document.addEventListener("DOMContentLoaded", function() {
-    let projects = [];
-    project_list.projects.forEach(project => {
-        projects.push(project);
-    });
-    project_html = loadProjects(projects);
-    let projectList = document.getElementById('projectsList');
-    projectList.innerHTML = project_html
+    function displayProjects(projectList) {
+        let projectsList = document.getElementById('project-list');
+        projectList.forEach(project => {
+            let htmlTemplate = `
+                <div class="project-entry">
+                    <article class="grid" style="height: 350px;">
+                        <a href="./project-list/${project.meta.project_url}.html" class="cover-image" style="background: url(../assets/projects/${project.meta.image}); background-size: cover; background-position: center center;"></a>
+                        <div style="padding: 15px;">
+                            <a href="./project-list/${project.meta.project_url}.html" style="text-decoration: none;"><h3>${project.meta.name}</h3></a>
+                            <p>${project.meta.description}</p>
+                            <div>
+                                <p style="margin-bottom: 10px;"><strong>Languages:</strong></p>
+                                ${getProgrammingLanguageList(project.meta.programming_languages)}
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            `;
+            projectsList.innerHTML += htmlTemplate;
+        });
+    }
+
+    function getProgrammingLanguageList(languages) {
+        let languageList = '';
+        languages.forEach(language => {
+            languageList += `<img src="../assets/icons/${language}.png" class="programming-icon">`;
+        });
+        return languageList;
+    }
 });
-
-function loadProjects(projects) {
-    var loaded_projects = [];
-    projects.forEach(project => {
-        let name = project.name;
-        let version = project.version;
-        let programming_languages = "<p>Language: ";
-        let description = project.description;
-
-        project.programming_languages.forEach(language => {
-            programming_languages += `<strong>${language}</strong> `;
-        }); programming_languages += "</p>";
-
-        loaded_projects += `
-            <div class="grid" style="grid-template-columns: 30% 68.64%;">
-                <article style="background: url('../assets/projects/${name}.png'); background-size: cover; background-position: center center;"></article>
-                <article>
-                    <h2><a href="">${name}</a></h2>
-                    <p>Version: ${version}</p>
-                    ${programming_languages}
-                    <p>${description}</p>
-                </article>
-            </div>
-        `
-
-    });
-    return loaded_projects;
-}
