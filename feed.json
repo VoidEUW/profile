@@ -1,0 +1,13 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Void",
+    "description": "",
+    "home_page_url": "https://voideuw.dev",
+    "feed_url": "https://voideuw.dev/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "Lukas Kreuz"
+    },
+    "items": [
+    ]
+}
