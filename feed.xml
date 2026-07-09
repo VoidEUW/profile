@@ -3,10 +3,33 @@
     <title>Void</title>
     <link href="https://voideuw.dev/feed.xml" rel="self" />
     <link href="https://voideuw.dev" />
-    <updated>1970-01-01T01:00:00+01:00</updated>
+    <updated>2026-07-08T18:13:22+02:00</updated>
     <author>
-        <name>Lukas Kreuz</name>
+        <name>Void</name>
     </author>
     <id>https://voideuw.dev</id>
 
+    <entry>
+        <title>Hello there!</title>
+        <author>
+            <name>Void</name>
+        </author>
+        <link href="https://voideuw.dev/hello-there/"/>
+        <id>https://voideuw.dev/hello-there/</id>
+        <media:content url="https://voideuw.dev/media/posts/8/background-anime.jpg" medium="image" />
+
+        <updated>2026-07-07T22:22:10+02:00</updated>
+            <summary type="html">
+                <![CDATA[
+                        <img src="https://voideuw.dev/media/posts/8/background-anime.jpg" alt="" />
+                    This is my first post on my portfolio website. I’m glad to share my programming world with you!
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://voideuw.dev/media/posts/8/background-anime.jpg" class="type:primaryImage" alt="" /></p>
+                <p>This is my first post on my portfolio website. I’m glad to share my programming world with you!</p>
+            ]]>
+        </content>
+    </entry>
 </feed>

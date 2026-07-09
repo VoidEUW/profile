@@ -6,8 +6,23 @@
     "feed_url": "https://voideuw.dev/feed.json",
     "user_comment": "",
     "author": {
-        "name": "Lukas Kreuz"
+        "name": "Void"
     },
     "items": [
+        {
+            "id": "https://voideuw.dev/hello-there/",
+            "url": "https://voideuw.dev/hello-there/",
+            "title": "Hello there!",
+            "summary": "This is my first post on my portfolio website. I’m glad to share my programming world with you!",
+            "content_html": "<p>This is my first post on my portfolio website. I’m glad to share my programming world with you!</p>",
+            "image": "https://voideuw.dev/media/posts/8/background-anime.jpg",
+            "author": {
+                "name": "Void"
+            },
+            "tags": [
+            ],
+            "date_published": "2026-07-07T22:22:10+02:00",
+            "date_modified": "2026-07-08T18:13:22+02:00"
+        }
     ]
 }
